@@ -64,6 +64,7 @@ class Editor extends React.Component {
     return (
       <div>
         <ReactQuill
+          theme="snow"
           onChange={this.onChange.bind(this)}
           value={this.state.messages}
         />
