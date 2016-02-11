@@ -1,16 +1,17 @@
+# TODO: move this out of repo.ex
 defmodule Editor.Repo do
-  # use Ecto.Repo, otp_app: :editor
+  import Agent
+
   def start_link do
-    Agent.start_link(fn -> "" end, name: __MODULE__)
+    Agent.start_link(fn -> "<div>lol</div>" end, name: __MODULE__)
     {:ok, self}
   end
 
   def _get_agent do
-    "lol"
-    #{:noreply, "lol"} #Agent.get(__MODULE__, fn str -> str end)
+    Agent.get(__MODULE__, fn str -> str end)
   end
 
-  def run(str) do
-    Agent.update(__MODULE__, fn str -> str end)
+  def run(new_value) do
+    Agent.update(__MODULE__, fn str -> new_value end)
   end
 end

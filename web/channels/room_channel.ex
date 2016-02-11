@@ -10,8 +10,8 @@ defmodule Chat.RoomChannel do
 
   def handle_info(:after_join, socket) do
     result = Repo._get_agent
-    IO.puts result
-    broadcast! socket, "message", %{body: "lol"}
+    #IO.puts result
+    broadcast! socket, "message", %{body: result}
     #(result, fn message -> push socket, "message", message end)
     #push socket, "message", Repo._get_agent
     {:noreply, socket}
