@@ -1,9 +1,9 @@
 # TODO: move this out of repo.ex
-defmodule Editor.Repo do
+defmodule Editor.State do
   import Agent
 
   def start_link do
-    Agent.start_link(fn -> "<img src='http://i.giphy.com/MMIKQNEsdmKSk.gif'>" end, name: __MODULE__)
+    Agent.start_link(fn -> "<div>lol</div>" end, name: __MODULE__)
     {:ok, self}
   end
 

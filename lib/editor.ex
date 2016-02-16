@@ -10,7 +10,7 @@ defmodule Editor do
       # Start the endpoint when the application starts
       supervisor(Editor.Endpoint, []),
       # Start the Ecto repository
-      supervisor(Editor.Repo, []),
+      supervisor(Editor.State, []),
       # Here you could define other workers and supervisors as children
       # worker(Editor.Worker, [arg1, arg2, arg3]),
     ]
