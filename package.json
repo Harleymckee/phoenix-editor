@@ -11,5 +11,8 @@
     "react-dom": "^0.14.7",
     "react-quill": "^0.4.1",
     "uglify-js-brunch": ">= 1.0 < 1.8"
+  },
+  "scripts": {
+    "postinstall": "node_modules/.bin/brunch build"
   }
 }
