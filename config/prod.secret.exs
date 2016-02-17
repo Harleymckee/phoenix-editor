@@ -4,7 +4,7 @@ use Mix.Config
 # you likely want to automate and keep it away from
 # your version control system.
 config :editor, Editor.Endpoint,
-  secret_key_base: "H1SJ0TcMgJvam5degP5htDZMFxxfK7PpDf5PgBp4YtaKXnilrfwbnqWqU6XU9eqH"
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Configure your database
 config :editor, Editor.Repo,
