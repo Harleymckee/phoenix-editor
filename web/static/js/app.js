@@ -28,47 +28,34 @@ import socket from './socket'
 class Editor extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {activeRoom: "general", messages: '', channel: socket.channel("topic:general")}
-  }
-  // TODO: fluxify
-  configureChannel(channel) {
-    channel.join()
-      .receive("ok", (cool) => {
-        console.log('you in')
-      })
-      .receive("error", () => { console.log(`Unable to join the ${this.state.activeRoom} chat room.`) })
-    channel.on("message", payload => {
-      this.setState({messages: payload.body})
+    this.state = {
+      content: '',
+      channel: socket.channel("topic:general"),
+      busy: false
+    }
+    this.state.channel.join()
+      .receive("ok", (cool) => { console.log('you in') })
+      .receive("error", () => { console.log('something bad happened') })
+    this.state.channel.on("message", payload => {
+      this.setState({busy: true})
+      this.setState({content: payload.body})
+      this.setState({busy: false})
     })
   }
 
-  handleMessageSubmit(message) {
-    this.state.channel.push("message", {body: message})
-  }
-
-  // handleRoomLinkClick(room) {
-  //   let channel = this.props.socket.channel(`topic:${room}`)
-  //   this.setState({activeRoom: room, messages: [], channel: channel})
-  //   this.configureChannel(channel)
-  // }
-
-  componentDidMount() {
-    this.configureChannel(this.state.channel)
-  }
-
   onChange(newValue) {
-    this.handleMessageSubmit(newValue)
+    if (!this.state.busy) {
+      this.state.channel.push("message", {body: newValue})
+    }
   }
 
   render() {
     return (
-      <div>
-        <ReactQuill
-          theme="snow"
-          onChange={this.onChange.bind(this)}
-          value={this.state.messages}
-        />
-      </div>
+      <ReactQuill
+        theme="snow"
+        onChange={this.onChange.bind(this)}
+        value={this.state.content}
+      />
     )
   }
 }

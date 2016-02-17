@@ -5,6 +5,11 @@ defmodule Editor.UserSocket do
   # channel "rooms:*", Editor.RoomChannel
 
   # TODO: rename to more appropiate
+
+  # BLOG POST FODDER
+  # everytime there is a message for a topic with any id
+  # handle that in RoomChannel code
+  # here we can throw in rules around authentication
   channel "topic:*", Chat.RoomChannel
 
   ## Transports
