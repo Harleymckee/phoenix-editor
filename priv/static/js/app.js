@@ -32108,60 +32108,39 @@ var Editor = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Editor).call(this, props));
 
-    _this.state = { activeRoom: "general", messages: '', channel: _socket2.default.channel("topic:general") };
+    _this.state = {
+      content: '',
+      channel: _socket2.default.channel("topic:general"),
+      busy: false
+    };
+    _this.state.channel.join().receive("ok", function (cool) {
+      console.log('you in');
+    }).receive("error", function () {
+      console.log('something bad happened');
+    });
+    _this.state.channel.on("message", function (payload) {
+      _this.setState({ busy: true });
+      _this.setState({ content: payload.body });
+      _this.setState({ busy: false });
+    });
     return _this;
   }
-  // TODO: fluxify
-
 
   _createClass(Editor, [{
-    key: "configureChannel",
-    value: function configureChannel(channel) {
-      var _this2 = this;
-
-      channel.join().receive("ok", function (cool) {
-        console.log('you in');
-      }).receive("error", function () {
-        console.log("Unable to join the " + _this2.state.activeRoom + " chat room.");
-      });
-      channel.on("message", function (payload) {
-        _this2.setState({ messages: payload.body });
-      });
-    }
-  }, {
-    key: "handleMessageSubmit",
-    value: function handleMessageSubmit(message) {
-      this.state.channel.push("message", { body: message });
-    }
-
-    // handleRoomLinkClick(room) {
-    //   let channel = this.props.socket.channel(`topic:${room}`)
-    //   this.setState({activeRoom: room, messages: [], channel: channel})
-    //   this.configureChannel(channel)
-    // }
-
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.configureChannel(this.state.channel);
-    }
-  }, {
     key: "onChange",
     value: function onChange(newValue) {
-      this.handleMessageSubmit(newValue);
+      if (!this.state.busy) {
+        this.state.channel.push("message", { body: newValue });
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(_reactQuill2.default, {
-          theme: "snow",
-          onChange: this.onChange.bind(this),
-          value: this.state.messages
-        })
-      );
+      return _react2.default.createElement(_reactQuill2.default, {
+        theme: "snow",
+        onChange: this.onChange.bind(this),
+        value: this.state.content
+      });
     }
   }]);
 
@@ -32175,7 +32154,7 @@ _reactDom2.default.render(_react2.default.createElement(Editor, null), document.
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _phoenix = require("deps/phoenix/web/static/js/phoenix");
@@ -32196,14 +32175,14 @@ var socket = new _phoenix.Socket("/socket", { params: { token: window.userToken 
 //       plug :put_user_token
 //     end
 //
-//     defp put_user_token(conn, _) do
-//       if current_user = conn.assigns[:current_user] do
-//         token = Phoenix.Token.sign(conn, "user socket", current_user.id)
-//         assign(conn, :user_token, token)
-//       else
-//         conn
-//       end
-//     end
+// defp put_user_token(conn, _) do
+//   if current_user = conn.assigns[:current_user] do
+//     token = Phoenix.Token.sign(conn, "user socket", current_user.id)
+//     assign(conn, :user_token, token)
+//   else
+//     conn
+//   end
+// end
 //
 // Now you need to pass this token to JavaScript. You can do so
 // inside a script tag in "web/templates/layout/app.html.eex":
@@ -32213,19 +32192,22 @@ var socket = new _phoenix.Socket("/socket", { params: { token: window.userToken 
 // You will need to verify the user token in the "connect/2" function
 // in "web/channels/user_socket.ex":
 //
-//     def connect(%{"token" => token}, socket) do
-//       # max_age: 1209600 is equivalent to two weeks in seconds
-//       case Phoenix.Token.verify(socket, "user socket", token, max_age: 1209600) do
-//         {:ok, user_id} ->
-//           {:ok, assign(socket, :user, user_id)}
-//         {:error, reason} ->
-//           :error
-//       end
-//     end
+// def connect(%{"token" => token}, socket) do
+//   # max_age: 1209600 is equivalent to two weeks in seconds
+//   case Phoenix.Token.verify(socket, "user socket", token, max_age: 1209600) do
+//     {:ok, user_id} ->
+//       {:ok, assign(socket, :user, user_id)}
+//     {:error, reason} ->
+//       :error
+//   end
+// end
 //
 // Finally, pass the token on connect as below. Or remove it
 // from connect if you don't care about authentication.
 
+// BLOG creates one process (whatsApp 20 million single node), not cpu
+// process, but an Elixir/erlang process
+// one process per channel, isolated, concurrent
 // NOTE: The contents of this file will only be executed if
 // you uncomment its entry in "web/static/js/app.js".
 
