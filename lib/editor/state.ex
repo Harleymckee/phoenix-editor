@@ -1,4 +1,3 @@
-# TODO: move this out of repo.ex
 defmodule Editor.State do
   import Agent
 

@@ -4,7 +4,6 @@ defmodule Chat.RoomChannel do
   alias Editor.State
 
   def join("topic:" <> _topic_name, _auth_msg, socket) do
-    # 
     send(self, :after_join)
     {:ok, socket}
   end
@@ -16,7 +15,6 @@ defmodule Chat.RoomChannel do
   end
 
   def handle_in("message", %{"body" => body}, socket) do
-    IO.puts body
     broadcast! socket, "message", %{body: body}
     State.run(body)
     {:noreply, socket}
