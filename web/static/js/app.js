@@ -49,7 +49,7 @@ class Editor extends React.Component {
     return (
       <ReactQuill
         theme="snow"
-        onKeyDown={this.onChange.bind(this)}
+        onKeyUp={this.onChange.bind(this)}
         value={this.state.content}
       />
     )
