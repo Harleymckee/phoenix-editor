@@ -111,20 +111,19 @@
 })();
 (function() {
     var global = window;
-    
-var process;
+    var __shims = {assert: ({}),buffer: ({}),child_process: ({}),cluster: ({}),crypto: ({}),dgram: ({}),dns: ({}),domain: ({}),events: ({}),fs: ({}),http: ({}),https: ({}),net: ({}),os: ({}),path: ({}),punycode: ({}),querystring: ({}),readline: ({}),repl: ({}),string_decoder: ({}),tls: ({}),tty: ({}),url: ({}),util: ({}),vm: ({}),zlib: ({}),process: ({"env":{}})};
+    var process = __shims.process;
 
     var __makeRequire = function(r, __brmap) {
       return function(name) {
         if (__brmap[name] !== undefined) name = __brmap[name];
         name = name.replace(".js", "");
-        return r(name);
+        return ["assert","buffer","child_process","cluster","crypto","dgram","dns","domain","events","fs","http","https","net","os","path","punycode","querystring","readline","repl","string_decoder","tls","tty","url","util","vm","zlib","process"].indexOf(name) === -1 ? r(name) : __shims[name];
       }
     };
   require.register('fbjs/lib/EventListener', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -208,12 +207,10 @@ var EventListener = {
 };
 
 module.exports = EventListener;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/ExecutionEnvironment', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -249,12 +246,10 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/camelize', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -286,12 +281,10 @@ function camelize(string) {
 }
 
 module.exports = camelize;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/camelizeStyleName', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -331,12 +324,10 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/containsNode', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -391,12 +382,10 @@ function containsNode(_x, _x2) {
 }
 
 module.exports = containsNode;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/createArrayFromMixed', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -481,12 +470,10 @@ function createArrayFromMixed(obj) {
 }
 
 module.exports = createArrayFromMixed;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/createNodesFromMarkup', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -570,12 +557,10 @@ function createNodesFromMarkup(markup, handleScript) {
 }
 
 module.exports = createNodesFromMarkup;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/emptyFunction', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -613,12 +598,10 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/emptyObject', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -638,12 +621,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = emptyObject;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/focusNode', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -669,12 +650,10 @@ function focusNode(node) {
 }
 
 module.exports = focusNode;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/getActiveElement', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -709,12 +688,10 @@ function getActiveElement() /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/getMarkupWrap', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -809,12 +786,10 @@ function getMarkupWrap(nodeName) {
 }
 
 module.exports = getMarkupWrap;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/getUnboundedScrollPosition', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -852,12 +827,10 @@ function getUnboundedScrollPosition(scrollable) {
 }
 
 module.exports = getUnboundedScrollPosition;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/hyphenate', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -890,12 +863,10 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/hyphenateStyleName', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -934,12 +905,10 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/invariant', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -989,12 +958,10 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/isNode', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -1017,12 +984,10 @@ function isNode(object) {
 }
 
 module.exports = isNode;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/isTextNode', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -1047,12 +1012,10 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/keyMirror', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -1100,12 +1063,10 @@ var keyMirror = function (obj) {
 };
 
 module.exports = keyMirror;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/keyOf', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -1140,12 +1101,10 @@ var keyOf = function (oneKeyObj) {
 };
 
 module.exports = keyOf;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/mapObject', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -1196,12 +1155,10 @@ function mapObject(object, callback, context) {
 }
 
 module.exports = mapObject;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/memoizeStringOnly', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -1232,12 +1189,10 @@ function memoizeStringOnly(callback) {
 }
 
 module.exports = memoizeStringOnly;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/performance', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -1260,12 +1215,10 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = performance || {};
-    })(exports,require,module);
   });
 require.register('fbjs/lib/performanceNow', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -1299,12 +1252,10 @@ if (performance.now) {
 }
 
 module.exports = performanceNow;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/shallowEqual', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -1354,12 +1305,10 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/toArray', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -1416,12 +1365,10 @@ function toArray(obj) {
 }
 
 module.exports = toArray;
-    })(exports,require,module);
   });
 require.register('fbjs/lib/warning', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["loose-envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -1478,109 +1425,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = warning;
-    })(exports,require,module);
-  });
-require.register('process', function(exports,req,module){
-    var require = __makeRequire((function(n) { return req(n.replace('./', 'process//')); }), {});
-    (function(exports,require,module) {
-      // shim for using process in browser
-
-var process = module.exports = {};
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = setTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    clearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        setTimeout(drainQueue, 0);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-    })(exports,require,module);
   });
 require.register('quill/dist/quill', function(exports,req,module){
-    var require = __makeRequire((req), {"lodash":".build/lodash.js"});
-    (function(exports,require,module) {
-      /*! Quill Editor v0.20.1
+    var require = __makeRequire((req), {"lodash":"quill/.build/lodash"});
+    /*! Quill Editor v0.20.1
  *  https://quilljs.com/
  *  Copyright (c) 2014, Jason Chen
  *  Copyright (c) 2013, salesforce.com
@@ -12329,37 +12177,29 @@ module.exports = SnowTheme;
 
 },{"../../lib/color-picker":16,"../../lib/dom":17,"../../lib/picker":19,"../base":32,"lodash":1}]},{},[15])(15)
 });
-    })(exports,require,module);
   });
 require.register('quill', function(exports,req,module){
-    var require = __makeRequire((function(n) { return req(n.replace('./', 'quill//')); }), {"lodash":".build/lodash.js"});
-    (function(exports,require,module) {
-      module.exports = require('./dist/quill');
+    var require = __makeRequire((function(n) { return req(n.replace('./', 'quill//')); }), {"lodash":"quill/.build/lodash"});
+    module.exports = require('./dist/quill');
 
-    })(exports,require,module);
   });
 require.register('react-dom', function(exports,req,module){
     var require = __makeRequire((function(n) { return req(n.replace('./', 'react-dom//')); }), {});
-    (function(exports,require,module) {
-      'use strict';
+    'use strict';
 
 module.exports = require('react/lib/ReactDOM');
 
-    })(exports,require,module);
   });
 require.register('react-dom/server', function(exports,req,module){
     var require = __makeRequire((req), {});
-    (function(exports,require,module) {
-      'use strict';
+    'use strict';
 
 module.exports = require('react/lib/ReactDOMServer');
 
-    })(exports,require,module);
   });
 require.register('react-quill/src/component', function(exports,req,module){
     var require = __makeRequire((req), {});
-    (function(exports,require,module) {
-      'use strict';
+    'use strict';
 
 var React = require('react'),
 	ReactDOM = require('react-dom'),
@@ -12648,12 +12488,10 @@ var QuillComponent = React.createClass({
 
 module.exports = QuillComponent;
 
-    })(exports,require,module);
   });
 require.register('react-quill', function(exports,req,module){
     var require = __makeRequire((function(n) { return req(n.replace('./', 'react-quill//src/')); }), {});
-    (function(exports,require,module) {
-      /*
+    /*
 React-Quill v0.4.1
 https://github.com/zenoamaro/react-quill
 */
@@ -12662,12 +12500,10 @@ module.exports.Mixin = require('./mixin');
 module.exports.Toolbar = require('./toolbar');
 module.exports.Quill = require('quill');
 
-    })(exports,require,module);
   });
 require.register('react-quill/src/mixin', function(exports,req,module){
     var require = __makeRequire((req), {});
-    (function(exports,require,module) {
-      'use strict';
+    'use strict';
 
 var Quill = require('quill');
 
@@ -12759,12 +12595,10 @@ var QuillMixin = {
 
 module.exports = QuillMixin;
 
-    })(exports,require,module);
   });
 require.register('react-quill/src/toolbar', function(exports,req,module){
     var require = __makeRequire((req), {});
-    (function(exports,require,module) {
-      'use strict';
+    'use strict';
 
 var React = require('react'),
 	ReactDOMServer = require('react-dom/server'),
@@ -12927,12 +12761,10 @@ module.exports = QuillToolbar;
 QuillToolbar.defaultItems = defaultItems;
 QuillToolbar.defaultColors = defaultColors;
 
-    })(exports,require,module);
   });
 require.register('react/lib/AutoFocusUtils', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -12968,12 +12800,10 @@ var AutoFocusUtils = {
 };
 
 module.exports = AutoFocusUtils;
-    })(exports,require,module);
   });
 require.register('react/lib/BeforeInputEventPlugin', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015 Facebook, Inc.
  * All rights reserved.
  *
@@ -13378,12 +13208,10 @@ var BeforeInputEventPlugin = {
 };
 
 module.exports = BeforeInputEventPlugin;
-    })(exports,require,module);
   });
 require.register('react/lib/CSSProperty', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -13522,12 +13350,10 @@ var CSSProperty = {
 };
 
 module.exports = CSSProperty;
-    })(exports,require,module);
   });
 require.register('react/lib/CSSPropertyOperations', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -13702,12 +13528,10 @@ ReactPerf.measureMethods(CSSPropertyOperations, 'CSSPropertyOperations', {
 });
 
 module.exports = CSSPropertyOperations;
-    })(exports,require,module);
   });
 require.register('react/lib/CallbackQueue', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -13800,12 +13624,10 @@ assign(CallbackQueue.prototype, {
 PooledClass.addPoolingTo(CallbackQueue);
 
 module.exports = CallbackQueue;
-    })(exports,require,module);
   });
 require.register('react/lib/ChangeEventPlugin', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -14126,12 +13948,10 @@ var ChangeEventPlugin = {
 };
 
 module.exports = ChangeEventPlugin;
-    })(exports,require,module);
   });
 require.register('react/lib/ClientReactRootIndex', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -14154,12 +13974,10 @@ var ClientReactRootIndex = {
 };
 
 module.exports = ClientReactRootIndex;
-    })(exports,require,module);
   });
 require.register('react/lib/DOMChildrenOperations', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -14288,12 +14106,10 @@ ReactPerf.measureMethods(DOMChildrenOperations, 'DOMChildrenOperations', {
 });
 
 module.exports = DOMChildrenOperations;
-    })(exports,require,module);
   });
 require.register('react/lib/DOMProperty', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -14527,12 +14343,10 @@ var DOMProperty = {
 };
 
 module.exports = DOMProperty;
-    })(exports,require,module);
   });
 require.register('react/lib/DOMPropertyOperations', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -14757,12 +14571,10 @@ ReactPerf.measureMethods(DOMPropertyOperations, 'DOMPropertyOperations', {
 });
 
 module.exports = DOMPropertyOperations;
-    })(exports,require,module);
   });
 require.register('react/lib/Danger', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -14907,12 +14719,10 @@ var Danger = {
 };
 
 module.exports = Danger;
-    })(exports,require,module);
   });
 require.register('react/lib/DefaultEventPluginOrder', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -14939,12 +14749,10 @@ var keyOf = require('fbjs/lib/keyOf');
 var DefaultEventPluginOrder = [keyOf({ ResponderEventPlugin: null }), keyOf({ SimpleEventPlugin: null }), keyOf({ TapEventPlugin: null }), keyOf({ EnterLeaveEventPlugin: null }), keyOf({ ChangeEventPlugin: null }), keyOf({ SelectEventPlugin: null }), keyOf({ BeforeInputEventPlugin: null })];
 
 module.exports = DefaultEventPluginOrder;
-    })(exports,require,module);
   });
 require.register('react/lib/EnterLeaveEventPlugin', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -15068,12 +14876,10 @@ var EnterLeaveEventPlugin = {
 };
 
 module.exports = EnterLeaveEventPlugin;
-    })(exports,require,module);
   });
 require.register('react/lib/EventConstants', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -15165,12 +14971,10 @@ var EventConstants = {
 };
 
 module.exports = EventConstants;
-    })(exports,require,module);
   });
 require.register('react/lib/EventPluginHub', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -15449,12 +15253,10 @@ var EventPluginHub = {
 };
 
 module.exports = EventPluginHub;
-    })(exports,require,module);
   });
 require.register('react/lib/EventPluginRegistry', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -15674,12 +15476,10 @@ var EventPluginRegistry = {
 };
 
 module.exports = EventPluginRegistry;
-    })(exports,require,module);
   });
 require.register('react/lib/EventPluginUtils', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -15881,12 +15681,10 @@ var EventPluginUtils = {
 };
 
 module.exports = EventPluginUtils;
-    })(exports,require,module);
   });
 require.register('react/lib/EventPropagators', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -16021,12 +15819,10 @@ var EventPropagators = {
 };
 
 module.exports = EventPropagators;
-    })(exports,require,module);
   });
 require.register('react/lib/FallbackCompositionState', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -16121,12 +15917,10 @@ assign(FallbackCompositionState.prototype, {
 PooledClass.addPoolingTo(FallbackCompositionState);
 
 module.exports = FallbackCompositionState;
-    })(exports,require,module);
   });
 require.register('react/lib/HTMLDOMPropertyConfig', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -16356,12 +16150,10 @@ var HTMLDOMPropertyConfig = {
 };
 
 module.exports = HTMLDOMPropertyConfig;
-    })(exports,require,module);
   });
 require.register('react/lib/LinkedValueUtils', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -16495,12 +16287,10 @@ var LinkedValueUtils = {
 };
 
 module.exports = LinkedValueUtils;
-    })(exports,require,module);
   });
 require.register('react/lib/Object.assign', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -16547,12 +16337,10 @@ function assign(target, sources) {
 }
 
 module.exports = assign;
-    })(exports,require,module);
   });
 require.register('react/lib/PooledClass', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -16671,12 +16459,10 @@ var PooledClass = {
 };
 
 module.exports = PooledClass;
-    })(exports,require,module);
   });
 require.register('react/lib/React', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -16716,12 +16502,10 @@ React.__SECRET_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactDOM;
 React.__SECRET_DOM_SERVER_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactDOMServer;
 
 module.exports = React;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactBrowserComponentMixin', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -16757,12 +16541,10 @@ var ReactBrowserComponentMixin = {
 };
 
 module.exports = ReactBrowserComponentMixin;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactBrowserEventEmitter', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -17086,12 +16868,10 @@ ReactPerf.measureMethods(ReactBrowserEventEmitter, 'ReactBrowserEventEmitter', {
 });
 
 module.exports = ReactBrowserEventEmitter;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactChildReconciler', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -17213,12 +16993,10 @@ var ReactChildReconciler = {
 };
 
 module.exports = ReactChildReconciler;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactChildren', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -17400,12 +17178,10 @@ var ReactChildren = {
 };
 
 module.exports = ReactChildren;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactClass', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -18176,12 +17952,10 @@ var ReactClass = {
 };
 
 module.exports = ReactClass;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactComponent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -18303,12 +18077,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = ReactComponent;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactComponentBrowserEnvironment', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -18349,12 +18121,10 @@ var ReactComponentBrowserEnvironment = {
 };
 
 module.exports = ReactComponentBrowserEnvironment;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactComponentEnvironment', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -18405,12 +18175,10 @@ var ReactComponentEnvironment = {
 };
 
 module.exports = ReactComponentEnvironment;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactCompositeComponent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -19104,12 +18872,10 @@ var ReactCompositeComponent = {
 };
 
 module.exports = ReactCompositeComponent;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactCurrentOwner', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -19139,12 +18905,10 @@ var ReactCurrentOwner = {
 };
 
 module.exports = ReactCurrentOwner;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOM', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -19236,12 +19000,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = React;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMButton', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -19291,12 +19053,10 @@ var ReactDOMButton = {
 };
 
 module.exports = ReactDOMButton;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMComponent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -20258,12 +20018,10 @@ ReactPerf.measureMethods(ReactDOMComponent, 'ReactDOMComponent', {
 assign(ReactDOMComponent.prototype, ReactDOMComponent.Mixin, ReactMultiChild.Mixin);
 
 module.exports = ReactDOMComponent;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMFactories', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -20440,12 +20198,10 @@ var ReactDOMFactories = mapObject({
 }, createDOMFactory);
 
 module.exports = ReactDOMFactories;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMFeatureFlags', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -20463,12 +20219,10 @@ var ReactDOMFeatureFlags = {
 };
 
 module.exports = ReactDOMFeatureFlags;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMIDOperations', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -20562,12 +20316,10 @@ ReactPerf.measureMethods(ReactDOMIDOperations, 'ReactDOMIDOperations', {
 });
 
 module.exports = ReactDOMIDOperations;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMInput', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -20720,12 +20472,10 @@ function _handleChange(event) {
 }
 
 module.exports = ReactDOMInput;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMOption', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -20814,12 +20564,10 @@ var ReactDOMOption = {
 };
 
 module.exports = ReactDOMOption;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMSelect', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -21007,12 +20755,10 @@ function _handleChange(event) {
 }
 
 module.exports = ReactDOMSelect;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMSelection', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -21224,12 +20970,10 @@ var ReactDOMSelection = {
 };
 
 module.exports = ReactDOMSelection;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMServer', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -21255,12 +20999,10 @@ var ReactDOMServer = {
 };
 
 module.exports = ReactDOMServer;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMTextComponent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -21387,12 +21129,10 @@ assign(ReactDOMTextComponent.prototype, {
 });
 
 module.exports = ReactDOMTextComponent;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDOMTextarea', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -21505,12 +21245,10 @@ function _handleChange(event) {
 }
 
 module.exports = ReactDOMTextarea;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDefaultBatchingStrategy', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -21577,12 +21315,10 @@ var ReactDefaultBatchingStrategy = {
 };
 
 module.exports = ReactDefaultBatchingStrategy;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDefaultInjection', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -21679,12 +21415,10 @@ function inject() {
 module.exports = {
   inject: inject
 };
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDefaultPerf', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -21921,12 +21655,10 @@ var ReactDefaultPerf = {
 };
 
 module.exports = ReactDefaultPerf;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactDefaultPerfAnalysis', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -22127,12 +21859,10 @@ var ReactDefaultPerfAnalysis = {
 };
 
 module.exports = ReactDefaultPerfAnalysis;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactElement', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -22379,12 +22109,10 @@ ReactElement.isValidElement = function (object) {
 };
 
 module.exports = ReactElement;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactElementValidator', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -22665,12 +22393,10 @@ var ReactElementValidator = {
 };
 
 module.exports = ReactElementValidator;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactEmptyComponent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -22721,12 +22447,10 @@ assign(ReactEmptyComponent.prototype, {
 ReactEmptyComponent.injection = ReactEmptyComponentInjection;
 
 module.exports = ReactEmptyComponent;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactEmptyComponentRegistry', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -22774,12 +22498,10 @@ var ReactEmptyComponentRegistry = {
 };
 
 module.exports = ReactEmptyComponentRegistry;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactErrorUtils', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -22856,12 +22578,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = ReactErrorUtils;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactEventEmitterMixin', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -22899,12 +22619,10 @@ var ReactEventEmitterMixin = {
 };
 
 module.exports = ReactEventEmitterMixin;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactEventListener', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -23115,12 +22833,10 @@ var ReactEventListener = {
 };
 
 module.exports = ReactEventListener;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactInjection', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -23158,12 +22874,10 @@ var ReactInjection = {
 };
 
 module.exports = ReactInjection;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactInputSelection', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -23287,12 +23001,10 @@ var ReactInputSelection = {
 };
 
 module.exports = ReactInputSelection;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactInstanceHandles', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -23594,12 +23306,10 @@ var ReactInstanceHandles = {
 };
 
 module.exports = ReactInstanceHandles;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactInstanceMap', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -23646,12 +23356,10 @@ var ReactInstanceMap = {
 };
 
 module.exports = ReactInstanceMap;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactIsomorphic', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -23725,12 +23433,10 @@ var React = {
 };
 
 module.exports = React;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactMarkupChecksum', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -23775,12 +23481,10 @@ var ReactMarkupChecksum = {
 };
 
 module.exports = ReactMarkupChecksum;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactMount', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -24630,12 +24334,10 @@ ReactPerf.measureMethods(ReactMount, 'ReactMount', {
 });
 
 module.exports = ReactMount;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactMultiChild', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -25131,12 +24833,10 @@ var ReactMultiChild = {
 };
 
 module.exports = ReactMultiChild;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactMultiChildUpdateTypes', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -25168,12 +24868,10 @@ var ReactMultiChildUpdateTypes = keyMirror({
 });
 
 module.exports = ReactMultiChildUpdateTypes;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactNativeComponent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -25267,12 +24965,10 @@ var ReactNativeComponent = {
 };
 
 module.exports = ReactNativeComponent;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactNoopUpdateQueue', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -25390,12 +25086,10 @@ var ReactNoopUpdateQueue = {
 };
 
 module.exports = ReactNoopUpdateQueue;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactOwner', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -25486,12 +25180,10 @@ var ReactOwner = {
 };
 
 module.exports = ReactOwner;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactPerf', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -25587,12 +25279,10 @@ function _noMeasure(objName, fnName, func) {
 }
 
 module.exports = ReactPerf;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactPropTypeLocationNames', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -25616,12 +25306,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = ReactPropTypeLocationNames;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactPropTypeLocations', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -25643,12 +25331,10 @@ var ReactPropTypeLocations = keyMirror({
 });
 
 module.exports = ReactPropTypeLocations;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactPropTypes', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -26004,12 +25690,10 @@ function getClassName(propValue) {
 }
 
 module.exports = ReactPropTypes;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactReconcileTransaction', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -26160,12 +25844,10 @@ assign(ReactReconcileTransaction.prototype, Transaction.Mixin, Mixin);
 PooledClass.addPoolingTo(ReactReconcileTransaction);
 
 module.exports = ReactReconcileTransaction;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactReconciler', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -26272,12 +25954,10 @@ var ReactReconciler = {
 };
 
 module.exports = ReactReconciler;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactRef', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -26355,12 +26035,10 @@ ReactRef.detachRefs = function (instance, element) {
 };
 
 module.exports = ReactRef;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactRootIndex', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -26389,12 +26067,10 @@ var ReactRootIndex = {
 };
 
 module.exports = ReactRootIndex;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactServerBatchingStrategy', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -26417,12 +26093,10 @@ var ReactServerBatchingStrategy = {
 };
 
 module.exports = ReactServerBatchingStrategy;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactServerRendering', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -26505,12 +26179,10 @@ module.exports = {
   renderToString: renderToString,
   renderToStaticMarkup: renderToStaticMarkup
 };
-    })(exports,require,module);
   });
 require.register('react/lib/ReactServerRenderingTransaction', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -26597,12 +26269,10 @@ assign(ReactServerRenderingTransaction.prototype, Transaction.Mixin, Mixin);
 PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 
 module.exports = ReactServerRenderingTransaction;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactUpdateQueue', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -26859,12 +26529,10 @@ var ReactUpdateQueue = {
 };
 
 module.exports = ReactUpdateQueue;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactUpdates', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -27087,12 +26755,10 @@ var ReactUpdates = {
 };
 
 module.exports = ReactUpdates;
-    })(exports,require,module);
   });
 require.register('react/lib/ReactVersion', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -27106,12 +26772,10 @@ require.register('react/lib/ReactVersion', function(exports,req,module){
 'use strict';
 
 module.exports = '0.14.7';
-    })(exports,require,module);
   });
 require.register('react/lib/SVGDOMPropertyConfig', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -27238,12 +26902,10 @@ var SVGDOMPropertyConfig = {
 };
 
 module.exports = SVGDOMPropertyConfig;
-    })(exports,require,module);
   });
 require.register('react/lib/SelectEventPlugin', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -27444,12 +27106,10 @@ var SelectEventPlugin = {
 };
 
 module.exports = SelectEventPlugin;
-    })(exports,require,module);
   });
 require.register('react/lib/ServerReactRootIndex', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -27478,12 +27138,10 @@ var ServerReactRootIndex = {
 };
 
 module.exports = ServerReactRootIndex;
-    })(exports,require,module);
   });
 require.register('react/lib/SimpleEventPlugin', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28070,12 +27728,10 @@ var SimpleEventPlugin = {
 };
 
 module.exports = SimpleEventPlugin;
-    })(exports,require,module);
   });
 require.register('react/lib/SyntheticClipboardEvent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28114,12 +27770,10 @@ function SyntheticClipboardEvent(dispatchConfig, dispatchMarker, nativeEvent, na
 SyntheticEvent.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 
 module.exports = SyntheticClipboardEvent;
-    })(exports,require,module);
   });
 require.register('react/lib/SyntheticCompositionEvent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28156,12 +27810,10 @@ function SyntheticCompositionEvent(dispatchConfig, dispatchMarker, nativeEvent, 
 SyntheticEvent.augmentClass(SyntheticCompositionEvent, CompositionEventInterface);
 
 module.exports = SyntheticCompositionEvent;
-    })(exports,require,module);
   });
 require.register('react/lib/SyntheticDragEvent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28198,12 +27850,10 @@ function SyntheticDragEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeE
 SyntheticMouseEvent.augmentClass(SyntheticDragEvent, DragEventInterface);
 
 module.exports = SyntheticDragEvent;
-    })(exports,require,module);
   });
 require.register('react/lib/SyntheticEvent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28383,12 +28033,10 @@ SyntheticEvent.augmentClass = function (Class, Interface) {
 PooledClass.addPoolingTo(SyntheticEvent, PooledClass.fourArgumentPooler);
 
 module.exports = SyntheticEvent;
-    })(exports,require,module);
   });
 require.register('react/lib/SyntheticFocusEvent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28425,12 +28073,10 @@ function SyntheticFocusEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 
 module.exports = SyntheticFocusEvent;
-    })(exports,require,module);
   });
 require.register('react/lib/SyntheticInputEvent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28468,12 +28114,10 @@ function SyntheticInputEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticEvent.augmentClass(SyntheticInputEvent, InputEventInterface);
 
 module.exports = SyntheticInputEvent;
-    })(exports,require,module);
   });
 require.register('react/lib/SyntheticKeyboardEvent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28558,12 +28202,10 @@ function SyntheticKeyboardEvent(dispatchConfig, dispatchMarker, nativeEvent, nat
 SyntheticUIEvent.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 
 module.exports = SyntheticKeyboardEvent;
-    })(exports,require,module);
   });
 require.register('react/lib/SyntheticMouseEvent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28636,12 +28278,10 @@ function SyntheticMouseEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 
 module.exports = SyntheticMouseEvent;
-    })(exports,require,module);
   });
 require.register('react/lib/SyntheticTouchEvent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28687,12 +28327,10 @@ function SyntheticTouchEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticUIEvent.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 
 module.exports = SyntheticTouchEvent;
-    })(exports,require,module);
   });
 require.register('react/lib/SyntheticUIEvent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28752,12 +28390,10 @@ function SyntheticUIEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEve
 SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 
 module.exports = SyntheticUIEvent;
-    })(exports,require,module);
   });
 require.register('react/lib/SyntheticWheelEvent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -28812,12 +28448,10 @@ function SyntheticWheelEvent(dispatchConfig, dispatchMarker, nativeEvent, native
 SyntheticMouseEvent.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 
 module.exports = SyntheticWheelEvent;
-    })(exports,require,module);
   });
 require.register('react/lib/Transaction', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29048,12 +28682,10 @@ var Transaction = {
 };
 
 module.exports = Transaction;
-    })(exports,require,module);
   });
 require.register('react/lib/ViewportMetrics', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29080,12 +28712,10 @@ var ViewportMetrics = {
 };
 
 module.exports = ViewportMetrics;
-    })(exports,require,module);
   });
 require.register('react/lib/accumulateInto', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29144,12 +28774,10 @@ function accumulateInto(current, next) {
 }
 
 module.exports = accumulateInto;
-    })(exports,require,module);
   });
 require.register('react/lib/adler32', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29191,12 +28819,10 @@ function adler32(data) {
 }
 
 module.exports = adler32;
-    })(exports,require,module);
   });
 require.register('react/lib/canDefineProperty', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29220,12 +28846,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = canDefineProperty;
-    })(exports,require,module);
   });
 require.register('react/lib/dangerousStyleValue', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29280,12 +28904,10 @@ function dangerousStyleValue(name, value) {
 }
 
 module.exports = dangerousStyleValue;
-    })(exports,require,module);
   });
 require.register('react/lib/deprecated', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29333,12 +28955,10 @@ function deprecated(fnName, newModule, newPackage, ctx, fn) {
 }
 
 module.exports = deprecated;
-    })(exports,require,module);
   });
 require.register('react/lib/escapeTextContentForBrowser', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29376,12 +28996,10 @@ function escapeTextContentForBrowser(text) {
 }
 
 module.exports = escapeTextContentForBrowser;
-    })(exports,require,module);
   });
 require.register('react/lib/findDOMNode', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29430,12 +29048,10 @@ function findDOMNode(componentOrElement) {
 }
 
 module.exports = findDOMNode;
-    })(exports,require,module);
   });
 require.register('react/lib/flattenChildren', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29483,12 +29099,10 @@ function flattenChildren(children) {
 }
 
 module.exports = flattenChildren;
-    })(exports,require,module);
   });
 require.register('react/lib/forEachAccumulated', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29517,12 +29131,10 @@ var forEachAccumulated = function (arr, cb, scope) {
 };
 
 module.exports = forEachAccumulated;
-    })(exports,require,module);
   });
 require.register('react/lib/getEventCharCode', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29572,12 +29184,10 @@ function getEventCharCode(nativeEvent) {
 }
 
 module.exports = getEventCharCode;
-    })(exports,require,module);
   });
 require.register('react/lib/getEventKey', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29680,12 +29290,10 @@ function getEventKey(nativeEvent) {
 }
 
 module.exports = getEventKey;
-    })(exports,require,module);
   });
 require.register('react/lib/getEventModifierState', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29729,12 +29337,10 @@ function getEventModifierState(nativeEvent) {
 }
 
 module.exports = getEventModifierState;
-    })(exports,require,module);
   });
 require.register('react/lib/getEventTarget', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29763,12 +29369,10 @@ function getEventTarget(nativeEvent) {
 }
 
 module.exports = getEventTarget;
-    })(exports,require,module);
   });
 require.register('react/lib/getIteratorFn', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29808,12 +29412,10 @@ function getIteratorFn(maybeIterable) {
 }
 
 module.exports = getIteratorFn;
-    })(exports,require,module);
   });
 require.register('react/lib/getNodeForCharacterOffset', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29886,12 +29488,10 @@ function getNodeForCharacterOffset(root, offset) {
 }
 
 module.exports = getNodeForCharacterOffset;
-    })(exports,require,module);
   });
 require.register('react/lib/getTextContentAccessor', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -29924,12 +29524,10 @@ function getTextContentAccessor() {
 }
 
 module.exports = getTextContentAccessor;
-    })(exports,require,module);
   });
 require.register('react/lib/instantiateReactComponent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -30041,12 +29639,10 @@ function instantiateReactComponent(node) {
 }
 
 module.exports = instantiateReactComponent;
-    })(exports,require,module);
   });
 require.register('react/lib/isEventSupported', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -30106,12 +29702,10 @@ function isEventSupported(eventNameSuffix, capture) {
 }
 
 module.exports = isEventSupported;
-    })(exports,require,module);
   });
 require.register('react/lib/isTextInputElement', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -30151,12 +29745,10 @@ function isTextInputElement(elem) {
 }
 
 module.exports = isTextInputElement;
-    })(exports,require,module);
   });
 require.register('react/lib/onlyChild', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -30189,12 +29781,10 @@ function onlyChild(children) {
 }
 
 module.exports = onlyChild;
-    })(exports,require,module);
   });
 require.register('react/lib/quoteAttributeValueForBrowser', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -30220,12 +29810,10 @@ function quoteAttributeValueForBrowser(value) {
 }
 
 module.exports = quoteAttributeValueForBrowser;
-    })(exports,require,module);
   });
 require.register('react/lib/renderSubtreeIntoContainer', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -30241,12 +29829,10 @@ require.register('react/lib/renderSubtreeIntoContainer', function(exports,req,mo
 var ReactMount = require('./ReactMount');
 
 module.exports = ReactMount.renderSubtreeIntoContainer;
-    })(exports,require,module);
   });
 require.register('react/lib/setInnerHTML', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -30336,12 +29922,10 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setInnerHTML;
-    })(exports,require,module);
   });
 require.register('react/lib/setTextContent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -30381,12 +29965,10 @@ if (ExecutionEnvironment.canUseDOM) {
 }
 
 module.exports = setTextContent;
-    })(exports,require,module);
   });
 require.register('react/lib/shouldUpdateReactComponent', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -30429,12 +30011,10 @@ function shouldUpdateReactComponent(prevElement, nextElement) {
 }
 
 module.exports = shouldUpdateReactComponent;
-    })(exports,require,module);
   });
 require.register('react/lib/traverseAllChildren', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -30623,12 +30203,10 @@ function traverseAllChildren(children, callback, traverseContext) {
 }
 
 module.exports = traverseAllChildren;
-    })(exports,require,module);
   });
 require.register('react/lib/validateDOMNesting', function(exports,req,module){
-    var require = __makeRequire((req), {"transform":["envify"]});
-    (function(exports,require,module) {
-      /**
+    var require = __makeRequire((req), {});
+    /**
  * Copyright 2015, Facebook, Inc.
  * All rights reserved.
  *
@@ -30991,20 +30569,15 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = validateDOMNesting;
-    })(exports,require,module);
   });
 require.register('react', function(exports,req,module){
-    var require = __makeRequire((function(n) { return req(n.replace('./', 'react//')); }), {"transform":["envify"]});
-    (function(exports,require,module) {
-      'use strict';
+    var require = __makeRequire((function(n) { return req(n.replace('./', 'react//')); }), {});
+    'use strict';
 
 module.exports = require('./lib/React');
 
-    })(exports,require,module);
   });
-require.register('process/browser', function(exports,require,module) {
-    module.exports = require('process');
-  });process = require('process');})();require.register("deps/phoenix/web/static/js/phoenix", function(exports, require, module) {
+})();require.register("deps/phoenix/web/static/js/phoenix", function(exports, require, module) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32119,26 +31692,22 @@ var Editor = function (_React$Component) {
       console.log('something bad happened');
     });
     _this.state.channel.on("message", function (payload) {
-      // this.setState({busy: true})
       _this.setState({ content: payload.body });
-      // this.setState({busy: false})
     });
     return _this;
   }
 
   _createClass(Editor, [{
     key: "onChange",
-    value: function onChange(newValue) {
-      // if (!this.state.busy) {
-      this.state.channel.push("message", { body: newValue });
-      // }
+    value: function onChange(e) {
+      this.state.channel.push("message", { body: e.target.innerHTML });
     }
   }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(_reactQuill2.default, {
         theme: "snow",
-        onKeyPress: this.onChange.bind(this),
+        onKeyDown: this.onChange.bind(this),
         value: this.state.content
       });
     }

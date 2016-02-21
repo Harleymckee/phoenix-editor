@@ -37,23 +37,19 @@ class Editor extends React.Component {
       .receive("ok", (cool) => { console.log('you in') })
       .receive("error", () => { console.log('something bad happened') })
     this.state.channel.on("message", payload => {
-      // this.setState({busy: true})
       this.setState({content: payload.body})
-      // this.setState({busy: false})
     })
   }
 
-  onChange(newValue) {
-    // if (!this.state.busy) {
-      this.state.channel.push("message", {body: newValue})
-    // }
+  onChange(e) {
+    this.state.channel.push("message", {body: e.target.innerHTML})
   }
 
   render() {
     return (
       <ReactQuill
         theme="snow"
-        onKeyPress={this.onChange.bind(this)}
+        onKeyDown={this.onChange.bind(this)}
         value={this.state.content}
       />
     )
