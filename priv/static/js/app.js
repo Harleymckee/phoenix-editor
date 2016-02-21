@@ -32138,7 +32138,7 @@ var Editor = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(_reactQuill2.default, {
         theme: "snow",
-        onChange: this.onChange.bind(this),
+        onKeyPress: this.onChange.bind(this),
         value: this.state.content
       });
     }
