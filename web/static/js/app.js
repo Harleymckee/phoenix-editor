@@ -37,16 +37,16 @@ class Editor extends React.Component {
       .receive("ok", (cool) => { console.log('you in') })
       .receive("error", () => { console.log('something bad happened') })
     this.state.channel.on("message", payload => {
-      this.setState({busy: true})
+      // this.setState({busy: true})
       this.setState({content: payload.body})
-      this.setState({busy: false})
+      // this.setState({busy: false})
     })
   }
 
   onChange(newValue) {
-    if (!this.state.busy) {
+    // if (!this.state.busy) {
       this.state.channel.push("message", {body: newValue})
-    }
+    // }
   }
 
   render() {

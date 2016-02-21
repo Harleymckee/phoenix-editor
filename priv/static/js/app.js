@@ -32119,9 +32119,9 @@ var Editor = function (_React$Component) {
       console.log('something bad happened');
     });
     _this.state.channel.on("message", function (payload) {
-      _this.setState({ busy: true });
+      // this.setState({busy: true})
       _this.setState({ content: payload.body });
-      _this.setState({ busy: false });
+      // this.setState({busy: false})
     });
     return _this;
   }
@@ -32129,9 +32129,9 @@ var Editor = function (_React$Component) {
   _createClass(Editor, [{
     key: "onChange",
     value: function onChange(newValue) {
-      if (!this.state.busy) {
-        this.state.channel.push("message", { body: newValue });
-      }
+      // if (!this.state.busy) {
+      this.state.channel.push("message", { body: newValue });
+      // }
     }
   }, {
     key: "render",
