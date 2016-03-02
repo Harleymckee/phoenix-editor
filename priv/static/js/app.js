@@ -48897,6 +48897,8 @@ var _reactQuill = require("react-quill");
 
 var _reactQuill2 = _interopRequireDefault(_reactQuill);
 
+var _draftJs = require("draft-js");
+
 var _socket = require("./socket");
 
 var _socket2 = _interopRequireDefault(_socket);
@@ -48909,50 +48911,77 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Editor = function (_React$Component) {
-  _inherits(Editor, _React$Component);
+// class Collab extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     this.state = {
+//       content: '',
+//       channel: socket.channel("topic:general"),
+//       editorState: EditorState.createEmpty()
+//     }
+//     this.state.channel.join()
+//       .receive("ok", (cool) => { console.log('you in') })
+//       .receive("error", () => { console.log('something bad happened') })
+//     this.state.channel.on("message", payload => {
+//       this.setState({content: payload.body})
+//     })
+//     //this.state = {editorState: EditorState.createEmpty()};
+//     this.onChange = (editorState) => {
+//       debugger
+//       this.setState({editorState})
+//     }
+//   }
+//
+//   // onChange(content) {
+//   //   debugger
+//   //   // TODO: figure out loop shit
+//   //   this.state.channel.push("message", {body: content})
+//   // }
+//
+//   render() {
+//     const {editorState} = this.state
+//     return (
+//       <div>
+//       <Editor editorState={editorState} onChange={this.onChange}/>
+//       <ReactQuill
+//         theme="snow"
+//         onChange={this.onChange.bind(this)}
+//         value={this.state.content}
+//       />
+//       </div>
+//     )
+//   }
+// }
 
-  function Editor(props) {
-    _classCallCheck(this, Editor);
+var MyEditor = function (_React$Component) {
+  _inherits(MyEditor, _React$Component);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Editor).call(this, props));
+  function MyEditor(props) {
+    _classCallCheck(this, MyEditor);
 
-    _this.state = {
-      content: '',
-      channel: _socket2.default.channel("topic:general"),
-      busy: false
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MyEditor).call(this, props));
+
+    _this.state = { editorState: _draftJs.EditorState.createEmpty() };
+    _this.onChange = function (editorState) {
+      console.log((0, _draftJs.convertToRaw)(editorState.getCurrentContent()));
+      _this.setState({ editorState: editorState });
     };
-    _this.state.channel.join().receive("ok", function (cool) {
-      console.log('you in');
-    }).receive("error", function () {
-      console.log('something bad happened');
-    });
-    _this.state.channel.on("message", function (payload) {
-      _this.setState({ content: payload.body });
-    });
     return _this;
   }
 
-  _createClass(Editor, [{
-    key: "onChange",
-    value: function onChange(content) {
-      this.state.channel.push("message", { body: content });
-    }
-  }, {
+  _createClass(MyEditor, [{
     key: "render",
     value: function render() {
-      return _react2.default.createElement(_reactQuill2.default, {
-        theme: "snow",
-        onChange: this.onChange.bind(this),
-        value: this.state.content
-      });
+      var editorState = this.state.editorState;
+
+      return _react2.default.createElement(_draftJs.Editor, { editorState: editorState, onChange: this.onChange });
     }
   }]);
 
-  return Editor;
+  return MyEditor;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(Editor, null), document.getElementById('editor'));
+_reactDom2.default.render(_react2.default.createElement(MyEditor, null), document.getElementById('editor'));
 });
 
 ;require.register("web/static/js/socket", function(exports, require, module) {
