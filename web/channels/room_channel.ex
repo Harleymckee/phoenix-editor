@@ -14,9 +14,14 @@ defmodule Chat.RoomChannel do
     {:noreply, socket}
   end
 
-  def handle_in("message", %{"body" => body}, socket) do
-    broadcast! socket, "message", %{body: body}
+  def handle_in("state", %{"body" => body}, socket) do
     State.run(body)
+    {:noreply, socket}
+  end
+
+  def handle_in("message", %{"body" => body}, socket) do
+    result = State._get_agent
+    broadcast! socket, "message", %{body: result}
     {:noreply, socket}
   end
 end

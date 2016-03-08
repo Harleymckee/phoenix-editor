@@ -1,7 +1,7 @@
 defmodule Editor.State do
   import Agent
   def start_link do
-    Agent.start_link(fn -> "<div>lol</div>" end, name: __MODULE__)
+    Agent.start_link(fn -> "<div>lol</div>" end, name: __MODULE__) # -> []
     {:ok, self}
   end
 

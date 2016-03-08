@@ -48911,7 +48911,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// class Collab extends React.Component {
+// // class Collab extends React.Component {
 //   constructor(props) {
 //     super(props)
 //     this.state = {
@@ -48961,9 +48961,28 @@ var MyEditor = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MyEditor).call(this, props));
 
-    _this.state = { editorState: _draftJs.EditorState.createEmpty() };
+    _this.state = {
+      channel: _socket2.default.channel("topic:general"),
+      editorState: _draftJs.EditorState.createEmpty()
+    };
+
+    _this.state.channel.join().receive("ok", function (cool) {
+      console.log('you in');
+    }).receive("error", function () {
+      console.log('something bad happened');
+    });
+
+    _this.state.channel.on("message", function (payload) {
+      var parsed = (0, _draftJs.convertFromRaw)(JSON.parse(payload.body));
+      //this.state.editorState.push(ContentState.createFromBlockArray(parsed))
+      console.log(_this.state.editorState);
+      console.log(_draftJs.EditorState.createWithContent(_draftJs.ContentState.createFromBlockArray(parsed)));
+      _this.setState({ editorState: _draftJs.EditorState.createWithContent(_draftJs.ContentState.createFromBlockArray(parsed)) });
+    });
+
     _this.onChange = function (editorState) {
-      console.log((0, _draftJs.convertToRaw)(editorState.getCurrentContent()));
+      _this.state.channel.push("state", { body: JSON.stringify((0, _draftJs.convertToRaw)(editorState.getCurrentContent())) });
+      //console.log(convertToRaw(editorState.getCurrentContent()))
       _this.setState({ editorState: editorState });
     };
     return _this;
@@ -48972,9 +48991,22 @@ var MyEditor = function (_React$Component) {
   _createClass(MyEditor, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var editorState = this.state.editorState;
 
-      return _react2.default.createElement(_draftJs.Editor, { editorState: editorState, onChange: this.onChange });
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_draftJs.Editor, { editorState: editorState, onChange: this.onChange }),
+        _react2.default.createElement(
+          "div",
+          { onClick: function onClick() {
+              return _this2.state.channel.push("message", { body: JSON.stringify((0, _draftJs.convertToRaw)(_this2.state.editorState.getCurrentContent())) });
+            } },
+          "lol"
+        )
+      );
     }
   }]);
 

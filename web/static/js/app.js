@@ -2,10 +2,10 @@ import "deps/phoenix_html/web/static/js/phoenix_html"
 import React from "react"
 import ReactDOM from "react-dom"
 import ReactQuill from "react-quill"
-import {Editor, EditorState, convertToRaw, getCurrentContent} from 'draft-js';
+import {Editor, EditorState, ContentState, convertToRaw, convertFromRaw, getCurrentContent} from 'draft-js';
 import socket from './socket'
 
-// class Collab extends React.Component {
+// // class Collab extends React.Component {
 //   constructor(props) {
 //     super(props)
 //     this.state = {
@@ -51,15 +51,38 @@ import socket from './socket'
 class MyEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {editorState: EditorState.createEmpty()};
+    this.state = {
+      channel: socket.channel("topic:general"),
+      editorState: EditorState.createEmpty(),
+    }
+
+    this.state.channel.join()
+      .receive("ok", cool => { console.log('you in') })
+      .receive("error", () => { console.log('something bad happened') })
+
+    this.state.channel.on("message", payload => {
+      const parsed = convertFromRaw(JSON.parse(payload.body))
+      //this.state.editorState.push(ContentState.createFromBlockArray(parsed))
+      console.log(this.state.editorState)
+      console.log(EditorState.createWithContent(ContentState.createFromBlockArray(parsed)))
+      this.setState({editorState: EditorState.createWithContent(ContentState.createFromBlockArray(parsed))})
+    })
+
     this.onChange = (editorState) => {
-      console.log(convertToRaw(editorState.getCurrentContent()))
+      this.state.channel.push("state", {body: JSON.stringify(convertToRaw(editorState.getCurrentContent()))})
+      //console.log(convertToRaw(editorState.getCurrentContent()))
       this.setState({editorState})
     }
   }
+
   render() {
     const {editorState} = this.state;
-    return <Editor editorState={editorState} onChange={this.onChange} />;
+    return <div>
+      <Editor editorState={editorState} onChange={this.onChange} />
+      <div onClick={() => this.state.channel.push("message", {body: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()))})}>
+      lol
+      </div>
+    </div>
   }
 }
 
