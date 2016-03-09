@@ -31,7 +31,6 @@ class Editor extends React.Component {
     this.state = {
       content: '',
       channel: socket.channel("topic:general"),
-      busy: false
     }
     this.state.channel.join()
       .receive("ok", (cool) => { console.log('you in') })
@@ -42,6 +41,7 @@ class Editor extends React.Component {
   }
 
   onChange(e) {
+    this.setState({content: e.target.innerHTML})
     this.state.channel.push("message", {body: e.target.innerHTML})
   }
 

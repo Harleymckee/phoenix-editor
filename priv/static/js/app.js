@@ -31683,8 +31683,7 @@ var Editor = function (_React$Component) {
 
     _this.state = {
       content: '',
-      channel: _socket2.default.channel("topic:general"),
-      busy: false
+      channel: _socket2.default.channel("topic:general")
     };
     _this.state.channel.join().receive("ok", function (cool) {
       console.log('you in');
@@ -31700,6 +31699,7 @@ var Editor = function (_React$Component) {
   _createClass(Editor, [{
     key: "onChange",
     value: function onChange(e) {
+      this.setState({ content: e.target.innerHTML });
       this.state.channel.push("message", { body: e.target.innerHTML });
     }
   }, {
