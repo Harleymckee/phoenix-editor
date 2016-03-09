@@ -5,7 +5,7 @@ defmodule Editor.State do
     {:ok, self}
   end
 
-  def _get_agent do
+  def get_agent do
     Agent.get(__MODULE__, fn str -> str end)
   end
 

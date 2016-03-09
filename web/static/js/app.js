@@ -62,14 +62,14 @@ class MyEditor extends React.Component {
 
     this.state.channel.on("message", payload => {
       const parsed = convertFromRaw(JSON.parse(payload.body))
-      //this.state.editorState.push(ContentState.createFromBlockArray(parsed))
-      console.log(this.state.editorState)
-      console.log(EditorState.createWithContent(ContentState.createFromBlockArray(parsed)))
+      //console.log(this.state.editorState)
+      //this.state.editorState.push(this.state.editorState, ContentState.createFromBlockArray(parsed))
+
       this.setState({editorState: EditorState.createWithContent(ContentState.createFromBlockArray(parsed))})
     })
 
     this.onChange = (editorState) => {
-      this.state.channel.push("state", {body: JSON.stringify(convertToRaw(editorState.getCurrentContent()))})
+      this.state.channel.push("message", {body: JSON.stringify(convertToRaw(editorState.getCurrentContent()))})
       //console.log(convertToRaw(editorState.getCurrentContent()))
       this.setState({editorState})
     }

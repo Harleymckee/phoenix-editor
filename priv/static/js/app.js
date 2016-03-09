@@ -48974,14 +48974,14 @@ var MyEditor = function (_React$Component) {
 
     _this.state.channel.on("message", function (payload) {
       var parsed = (0, _draftJs.convertFromRaw)(JSON.parse(payload.body));
-      //this.state.editorState.push(ContentState.createFromBlockArray(parsed))
-      console.log(_this.state.editorState);
-      console.log(_draftJs.EditorState.createWithContent(_draftJs.ContentState.createFromBlockArray(parsed)));
+      //console.log(this.state.editorState)
+      //this.state.editorState.push(this.state.editorState, ContentState.createFromBlockArray(parsed))
+
       _this.setState({ editorState: _draftJs.EditorState.createWithContent(_draftJs.ContentState.createFromBlockArray(parsed)) });
     });
 
     _this.onChange = function (editorState) {
-      _this.state.channel.push("state", { body: JSON.stringify((0, _draftJs.convertToRaw)(editorState.getCurrentContent())) });
+      _this.state.channel.push("message", { body: JSON.stringify((0, _draftJs.convertToRaw)(editorState.getCurrentContent())) });
       //console.log(convertToRaw(editorState.getCurrentContent()))
       _this.setState({ editorState: editorState });
     };

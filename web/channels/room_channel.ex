@@ -9,7 +9,7 @@ defmodule Chat.RoomChannel do
   end
 
   def handle_info(:after_join, socket) do
-    result = State._get_agent
+    result = State.get_agent
     broadcast! socket, "message", %{body: result}
     {:noreply, socket}
   end
@@ -20,8 +20,8 @@ defmodule Chat.RoomChannel do
   end
 
   def handle_in("message", %{"body" => body}, socket) do
-    result = State._get_agent
-    broadcast! socket, "message", %{body: result}
+    State.run(body)
+    broadcast! socket, "message", %{body: State.get_agent}
     {:noreply, socket}
   end
 end
