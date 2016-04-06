@@ -31706,9 +31706,9 @@ var Editor = function (_React$Component) {
 
   _createClass(Editor, [{
     key: "onChange",
-    value: function onChange(e) {
+    value: function onChange(content) {
       this.state.saving = true;
-      this.setState({ content: e.target.innerHTML });
+      this.setState({ content: content });
     }
   }, {
     key: "render",
@@ -31718,7 +31718,7 @@ var Editor = function (_React$Component) {
         null,
         _react2.default.createElement(_reactQuill2.default, {
           theme: "snow",
-          onKeyUp: this.onChange.bind(this),
+          onChange: this.onChange.bind(this),
           value: this.state.content
         }),
         this.saving

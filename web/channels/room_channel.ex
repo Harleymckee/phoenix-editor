@@ -15,7 +15,6 @@ defmodule Chat.RoomChannel do
   end
 
   def handle_in("message", %{"body" => body}, socket) do
-    IO.puts body
     broadcast! socket, "message", %{body: body}
     State.run(body)
     {:noreply, socket}

@@ -64,9 +64,9 @@ class Editor extends React.Component {
     return null
   }
 
-  onChange(e) {
+  onChange(content) {
     this.state.saving = true
-    this.setState({content: e.target.innerHTML})
+    this.setState({content: content})
   }
 
   render() {
