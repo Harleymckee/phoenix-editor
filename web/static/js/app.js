@@ -30,6 +30,7 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       content: '',
+      saving: false,
       channel: socket.channel("topic:general"),
     }
     this.state.channel.join()
@@ -42,6 +43,7 @@ class Editor extends React.Component {
     setInterval(() => {
       if(this.didChangeOccur) {
         this.state.channel.push("message", {body: this.state.content})
+        this.state.saving = false
       }
     }, 1000)
   }
@@ -53,17 +55,30 @@ class Editor extends React.Component {
     return false
   }
 
+  get saving() {
+    if (this.state.saving === true) {
+      return <div>
+          ... saving
+        </div>
+    }
+    return null
+  }
+
   onChange(e) {
+    this.state.saving = true
     this.setState({content: e.target.innerHTML})
   }
 
   render() {
     return (
-      <ReactQuill
-        theme="snow"
-        onKeyUp={this.onChange.bind(this)}
-        value={this.state.content}
-      />
+      <div>
+        <ReactQuill
+          theme="snow"
+          onKeyUp={this.onChange.bind(this)}
+          value={this.state.content}
+        />
+        {this.saving}
+      </div>
     )
   }
 }

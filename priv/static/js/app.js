@@ -31683,6 +31683,7 @@ var Editor = function (_React$Component) {
 
     _this.state = {
       content: '',
+      saving: false,
       channel: _socket2.default.channel("topic:general")
     };
     _this.state.channel.join().receive("ok", function (cool) {
@@ -31697,6 +31698,7 @@ var Editor = function (_React$Component) {
     setInterval(function () {
       if (_this.didChangeOccur) {
         _this.state.channel.push("message", { body: _this.state.content });
+        _this.state.saving = false;
       }
     }, 1000);
     return _this;
@@ -31705,16 +31707,22 @@ var Editor = function (_React$Component) {
   _createClass(Editor, [{
     key: "onChange",
     value: function onChange(e) {
+      this.state.saving = true;
       this.setState({ content: e.target.innerHTML });
     }
   }, {
     key: "render",
     value: function render() {
-      return _react2.default.createElement(_reactQuill2.default, {
-        theme: "snow",
-        onKeyUp: this.onChange.bind(this),
-        value: this.state.content
-      });
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_reactQuill2.default, {
+          theme: "snow",
+          onKeyUp: this.onChange.bind(this),
+          value: this.state.content
+        }),
+        this.saving
+      );
     }
   }, {
     key: "didChangeOccur",
@@ -31723,6 +31731,18 @@ var Editor = function (_React$Component) {
         return true;
       }
       return false;
+    }
+  }, {
+    key: "saving",
+    get: function get() {
+      if (this.state.saving === true) {
+        return _react2.default.createElement(
+          "div",
+          null,
+          "... saving"
+        );
+      }
+      return null;
     }
   }]);
 
