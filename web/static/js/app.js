@@ -37,8 +37,10 @@ class Editor extends React.Component {
       .receive("ok", (cool) => { console.log('you in') })
       .receive("error", () => { console.log('something bad happened') })
     this.state.channel.on("message", payload => {
-      this.setState({content: payload.body})
-      this.previousValue = payload.body
+      if (!this.state.saving) {
+        this.setState({content: payload.body})
+        this.previousValue = payload.body
+      }
     })
     setInterval(() => {
       if(this.didChangeOccur) {
@@ -56,7 +58,7 @@ class Editor extends React.Component {
   }
 
   get saving() {
-    if (this.state.saving === true) {
+    if (this.state.saving) {
       return <div>
           ... saving
         </div>

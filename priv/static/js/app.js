@@ -31692,8 +31692,10 @@ var Editor = function (_React$Component) {
       console.log('something bad happened');
     });
     _this.state.channel.on("message", function (payload) {
-      _this.setState({ content: payload.body });
-      _this.previousValue = payload.body;
+      if (!_this.state.saving) {
+        _this.setState({ content: payload.body });
+        _this.previousValue = payload.body;
+      }
     });
     setInterval(function () {
       if (_this.didChangeOccur) {
@@ -31735,7 +31737,7 @@ var Editor = function (_React$Component) {
   }, {
     key: "saving",
     get: function get() {
-      if (this.state.saving === true) {
+      if (this.state.saving) {
         return _react2.default.createElement(
           "div",
           null,
