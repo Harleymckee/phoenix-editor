@@ -74,7 +74,7 @@ class Editor extends React.Component {
       <div>
         <ReactQuill
           theme="snow"
-          onKeyUp={this.onChange.bind(this)}
+          onChange={this.onChange.bind(this)}
           value={this.state.content}
         />
         {this.saving}
