@@ -31692,7 +31692,13 @@ var Editor = function (_React$Component) {
     });
     _this.state.channel.on("message", function (payload) {
       _this.setState({ content: payload.body });
+      _this.previousValue = payload.body;
     });
+    setInterval(function () {
+      if (_this.didChangeOccur) {
+        _this.state.channel.push("message", { body: _this.state.content });
+      }
+    }, 1000);
     return _this;
   }
 
@@ -31700,7 +31706,6 @@ var Editor = function (_React$Component) {
     key: "onChange",
     value: function onChange(e) {
       this.setState({ content: e.target.innerHTML });
-      this.state.channel.push("message", { body: e.target.innerHTML });
     }
   }, {
     key: "render",
@@ -31710,6 +31715,14 @@ var Editor = function (_React$Component) {
         onKeyUp: this.onChange.bind(this),
         value: this.state.content
       });
+    }
+  }, {
+    key: "didChangeOccur",
+    get: function get() {
+      if (this.previousValue != this.state.content) {
+        return true;
+      }
+      return false;
     }
   }]);
 

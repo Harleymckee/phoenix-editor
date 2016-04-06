@@ -37,12 +37,24 @@ class Editor extends React.Component {
       .receive("error", () => { console.log('something bad happened') })
     this.state.channel.on("message", payload => {
       this.setState({content: payload.body})
+      this.previousValue = payload.body
     })
+    setInterval(() => {
+      if(this.didChangeOccur) {
+        this.state.channel.push("message", {body: this.state.content})
+      }
+    }, 1000)
+  }
+
+  get didChangeOccur(){
+    if(this.previousValue != this.state.content){
+       return true
+    }
+    return false
   }
 
   onChange(e) {
     this.setState({content: e.target.innerHTML})
-    this.state.channel.push("message", {body: e.target.innerHTML})
   }
 
   render() {
