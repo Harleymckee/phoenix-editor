@@ -31684,24 +31684,28 @@ var Editor = function (_React$Component) {
     _this.state = {
       content: '',
       saving: false,
+      message: false,
       channel: _socket2.default.channel("topic:general")
     };
-    _this.state.channel.join().receive("ok", function (cool) {
-      console.log('you in');
+    _this.state.channel.join().receive("ok", function () {
+      console.log('you\'re in');
     }).receive("error", function () {
       console.log('something bad happened');
     });
+    _this.state.channel.on("initial state", function (payload) {
+      _this.setState({ content: payload.body });
+      _this.previousValue = payload.body;
+    });
     _this.state.channel.on("message", function (payload) {
-      if (!_this.state.saving) {
-        _this.setState({ content: payload.body });
-        _this.previousValue = payload.body;
-      }
+      _this.setState({ content: payload.body, saving: true });
+      _this.previousValue = payload.body;
     });
     setInterval(function () {
       if (_this.didChangeOccur) {
         _this.state.channel.push("message", { body: _this.state.content });
-        _this.state.saving = false;
+        _this.setState({ saving: false });
       }
+      _this.setState({ saving: false });
     }, 1000);
     return _this;
   }
@@ -31709,17 +31713,21 @@ var Editor = function (_React$Component) {
   _createClass(Editor, [{
     key: "onChange",
     value: function onChange(content) {
-      this.state.saving = true;
       this.setState({ content: content });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         "div",
         null,
         _react2.default.createElement(_reactQuill2.default, {
           theme: "snow",
+          onKeyDown: function onKeyDown() {
+            return _this2.setState({ saving: true });
+          },
           onChange: this.onChange.bind(this),
           value: this.state.content
         }),
@@ -31741,7 +31749,7 @@ var Editor = function (_React$Component) {
         return _react2.default.createElement(
           "div",
           null,
-          "... saving"
+          "...sync it up..."
         );
       }
       return null;

@@ -31,22 +31,26 @@ class Editor extends React.Component {
     this.state = {
       content: '',
       saving: false,
+      message: false,
       channel: socket.channel("topic:general"),
     }
     this.state.channel.join()
-      .receive("ok", (cool) => { console.log('you in') })
+      .receive("ok", () => { console.log('you\'re in') })
       .receive("error", () => { console.log('something bad happened') })
+    this.state.channel.on("initial state", payload => {
+      this.setState({content: payload.body})
+      this.previousValue = payload.body
+    })
     this.state.channel.on("message", payload => {
-      if (!this.state.saving) {
-        this.setState({content: payload.body})
-        this.previousValue = payload.body
-      }
+      this.setState({content: payload.body, saving: true})
+      this.previousValue = payload.body
     })
     setInterval(() => {
       if(this.didChangeOccur) {
         this.state.channel.push("message", {body: this.state.content})
-        this.state.saving = false
+        this.setState({saving: false})
       }
+      this.setState({saving: false})
     }, 1000)
   }
 
@@ -60,14 +64,13 @@ class Editor extends React.Component {
   get saving() {
     if (this.state.saving) {
       return <div>
-          ... saving
+          ...sync it up...
         </div>
     }
     return null
   }
 
   onChange(content) {
-    this.state.saving = true
     this.setState({content: content})
   }
 
@@ -76,6 +79,7 @@ class Editor extends React.Component {
       <div>
         <ReactQuill
           theme="snow"
+          onKeyDown={() => this.setState({saving: true})}
           onChange={this.onChange.bind(this)}
           value={this.state.content}
         />
