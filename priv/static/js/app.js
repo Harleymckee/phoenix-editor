@@ -31692,13 +31692,17 @@ var Editor = function (_React$Component) {
     }).receive("error", function () {
       console.log('something bad happened');
     });
+    // TODO: cleaner way to do this
     _this.state.channel.on("initial state", function (payload) {
       _this.setState({ content: payload.body });
       _this.previousValue = payload.body;
     });
     _this.state.channel.on("message", function (payload) {
-      _this.setState({ content: payload.body, saving: true });
-      _this.previousValue = payload.body;
+      // TODO dry up
+      if (_this.previousValue !== payload.body) {
+        _this.setState({ content: payload.body, saving: true });
+        _this.previousValue = payload.body;
+      }
     });
     setInterval(function () {
       if (_this.didChangeOccur) {
@@ -31737,10 +31741,7 @@ var Editor = function (_React$Component) {
   }, {
     key: "didChangeOccur",
     get: function get() {
-      if (this.previousValue != this.state.content) {
-        return true;
-      }
-      return false;
+      return this.previousValue !== this.state.content;
     }
   }, {
     key: "saving",

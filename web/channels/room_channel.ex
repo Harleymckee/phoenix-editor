@@ -19,11 +19,11 @@ defmodule Chat.RoomChannel do
     State.run(body)
     {:noreply, socket}
   end
-
-  intercept ["message"]
-
-  def handle_out("message", msg, socket) do
-    push socket, "message", msg
-    {:noreply, socket}
-  end
+  #
+  # intercept ["message"]
+  #
+  # def handle_out("message", msg, socket) do
+  #   push socket, "message", msg
+  #   {:noreply, socket}
+  # end
 end

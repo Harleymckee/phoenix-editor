@@ -37,13 +37,17 @@ class Editor extends React.Component {
     this.state.channel.join()
       .receive("ok", () => { console.log('you\'re in') })
       .receive("error", () => { console.log('something bad happened') })
+      // TODO: cleaner way to do this 
     this.state.channel.on("initial state", payload => {
       this.setState({content: payload.body})
       this.previousValue = payload.body
     })
     this.state.channel.on("message", payload => {
-      this.setState({content: payload.body, saving: true})
-      this.previousValue = payload.body
+      // TODO dry up
+      if(this.previousValue !== payload.body) {
+        this.setState({content: payload.body, saving: true})
+        this.previousValue = payload.body
+      }
     })
     setInterval(() => {
       if(this.didChangeOccur) {
@@ -55,10 +59,7 @@ class Editor extends React.Component {
   }
 
   get didChangeOccur(){
-    if(this.previousValue != this.state.content){
-       return true
-    }
-    return false
+    return this.previousValue !== this.state.content
   }
 
   get saving() {
